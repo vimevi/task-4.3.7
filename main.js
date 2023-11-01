@@ -83,7 +83,7 @@ async function onChange(e) {
 	);
 	if (response.ok) {
 		const data = await response.json();
-		console.log(data); // Check the data in the console
+		console.log(data);
 		renderResults(data);
 	} else {
 		// очистка автозаполнения
@@ -100,8 +100,8 @@ function renderResults(repoData) {
 	for (let i = 0; i < numResults; i++) {
 		const item = repoData.items[i];
 		const li = document.createElement('li');
-		li.textContent = item.name; // Set the text content of the li element
-		ul.appendChild(li); // Append the li element to the ul
+		li.textContent = item.name;
+		ul.appendChild(li);
 		li.addEventListener('click', () => {
 			generateRepoInfo(item);
 		});
