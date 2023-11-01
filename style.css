@@ -1,0 +1,70 @@
+body {
+	height: calc(100vh - 16px);
+	background: linear-gradient(#4169e1, rgb(173, 160, 154));
+}
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	background-color: #fff;
+}
+.search-repos__results {
+	margin-bottom: 20px;
+}
+.search-repos__results li {
+	padding-left: 10px;
+	transition: all 0.2s;
+	font-size: 20px;
+	padding: 10px;
+	cursor: pointer;
+}
+.search-repos__results li:hover {
+	background-color: #f1f1f1;
+}
+.container {
+	padding: 30px 10px;
+	margin: 0 auto;
+	max-width: 500px;
+}
+input {
+	width: 100%;
+	height: 30px;
+	font-size: 20px;
+	outline: none;
+}
+
+.search-repos__list {
+	font-size: 18px;
+	padding: 10px;
+	background-color: #fff;
+	margin-top: 4px;
+	width: 100%;
+	position: relative;
+}
+
+.search-repos__list li {
+	padding: 4px;
+}
+.search-repos__list ul {
+	border: 2px solid #f1f1f1;
+}
+
+.search-repos__del-btn {
+	background: url(/del.svg) no-repeat;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	border: 0;
+	position: absolute;
+	right: 16px;
+	top: 40px;
+	transition: opacity 0.2s;
+}
+.search-repos__del-btn:hover {
+	opacity: 0.8;
+}
+
+.search-repos__input::placeholder {
+	color: rgb(185, 185, 185);
+	padding-left: 4px;
+}
