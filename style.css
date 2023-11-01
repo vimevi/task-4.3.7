@@ -50,7 +50,7 @@ input {
 }
 
 .search-repos__del-btn {
-	background: url(/del.svg) no-repeat;
+	background: url(del.svg) no-repeat;
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
