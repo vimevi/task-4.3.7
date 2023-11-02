@@ -5,11 +5,13 @@ const form = document.createElement('form');
 const input = document.createElement('input');
 
 form.appendChild(input);
-container.appendChild(form);
+
 input.classList.add('search-repos__input');
 input.placeholder = 'Введите запрос..';
 input.setAttribute('type', 'text');
 input.setAttribute('name', 'name');
+
+container.appendChild(form);
 
 // убирает обновление страницы при нажатии на enter
 form.addEventListener('submit', (e) => {
@@ -79,7 +81,7 @@ async function onChange(e) {
 	const inputsValue = Object.fromEntries(new FormData(e.target.form));
 
 	const response = await fetch(
-		`https://api.github.com/search/repositories?q=${inputsValue.name}`
+		`https://api.github.com/search/repositories?q=${inputsValue.name}&per_page=5`
 	);
 	if (response.ok) {
 		const data = await response.json();
@@ -91,24 +93,23 @@ async function onChange(e) {
 		console.log('repo is not found');
 	}
 }
-
 function renderResults(repoData) {
 	ul.innerHTML = '';
-	// ограничение кол-ва результатов запроса
-	const numResults = Math.min(5, repoData.items.length);
 
-	for (let i = 0; i < numResults; i++) {
-		const item = repoData.items[i];
+	const fragment = document.createDocumentFragment();
+
+	for (const item of repoData.items) {
 		const li = document.createElement('li');
 		li.textContent = item.name;
-		ul.appendChild(li);
 		li.addEventListener('click', () => {
 			generateRepoInfo(item);
+			input.value = '';
+			ul.innerHTML = '';
 		});
+		fragment.appendChild(li);
 	}
-	searchResults.appendChild(ul);
+
+	ul.appendChild(fragment);
 }
 
-function createDeleteBtnEl() {}
-
-input.addEventListener('keyup', debounce(onChange, 350)); // опытным путём выведено значение 350 мс
+input.addEventListener('keydown', debounce(onChange, 350)); // опытным путём выведено значение 350 мс
