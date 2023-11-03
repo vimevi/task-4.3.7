@@ -112,4 +112,4 @@ function renderResults(repoData) {
 	ul.appendChild(fragment);
 }
 
-input.addEventListener('keydown', debounce(onChange, 350)); // опытным путём выведено значение 350 мс
+input.addEventListener('input', debounce(onChange, 350)); // опытным путём выведено значение 350 мс
